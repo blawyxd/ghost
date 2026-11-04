@@ -1,3 +1,4 @@
+
 from __future__ import annotations
 
 import typer
@@ -7,6 +8,7 @@ from rich.table import Table
 
 from ghost.modules.system import check_updates, disk_summary, find_large_files
 from ghost.modules.commands import SAVED_COMMANDS
+from ghost.modules.ship import ship_project
 
 app = typer.Typer(
     invoke_without_command=True,
@@ -28,6 +30,7 @@ def home(ctx: typer.Context):
             "  ghost disk      View disk usage\n"
             "  ghost large     Find large files\n"
             "  ghost vault     Saved commands\n"
+            "  ghost ship      Publish project (maintainer)\n"
             "  ghost help      Show help",
             border_style="white",
             padding=(1, 2)
@@ -102,11 +105,18 @@ def show_help():
         ("ghost disk", "View disk usage"),
         ("ghost large", "Find large files"),
         ("ghost vault", "View saved commands"),
+        ("ghost ship", "Publish project (maintainer only)"),
         ("ghost help", "Show help"),
     ]
 
     for command, description in commands:
-        console.print(f"[bold white]{command:<18}[/bold white] {description}")
+        console.print(f"[bold white]{command:<42}[/bold white] {description}")
+
+
+@app.command()
+def ship():
+    """Check, build and publish Ghost. Maintainer only."""
+    ship_project(console)
 
 
 def cli():
