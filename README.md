@@ -1,48 +1,48 @@
+python -c 'from pathlib import Path; Path("README.md").write_text("""<div align="center">
+
+<img src="website/public/favicon.svg" width="100" alt="Ghost logo">
+
 # ghost.
 
-A small Linux companion for the terminal.
+**A small Linux companion for the terminal.**
+
+Explore your system. Understand your tools. Learn Linux.
+
+[Website](https://github.com/uatimuu-cmyk/ghost) · [Documentation](website/src/pages/docs.astro) · [Report a bug](https://github.com/uatimuu-cmyk/ghost/issues)
+
+</div>
+
+---
+
+## What is Ghost?
+
+Ghost is an open-source Linux companion designed to make everyday system information and useful commands easier to access.
+
+It focuses on being lightweight, straightforward and useful without hiding what is happening behind the scenes.
 
 ## Features
 
-- Check available pacman updates without installing them.
-- View disk usage.
-- Find large files in your home directory.
-- Browse useful Linux commands.
+| Feature | Description |
+| --- | --- |
+| Updates | Check available pacman updates without installing them |
+| Disk | View your system disk usage |
+| Large files | Find large files in your home directory |
+| Vault | Browse useful Linux commands |
 
-## Requirements
+## Installation
+
+### Requirements
 
 - Linux
 - Python 3.10+
 - Git
-- pacman for update checks
+- pacman (for update checks)
 
-## Installation
+### Set up
 
-    git clone https://github.com/uatimuu-cmyk/ghost.git
-    cd ghost
-    python -m venv .venv
-    source .venv/bin/activate.fish
-    python -m pip install -e .
+Clone the repository:
 
-## Commands
-
-| Command | Description |
-| --- | --- |
-| `ghost` | Open the home screen |
-| `ghost help` | Show available commands |
-| `ghost updates` | Check pacman updates |
-| `ghost disk` | Show disk usage |
-| `ghost large` | Find large files |
-| `ghost vault` | Display useful Linux commands |
-
-## Safety
-
-Ghost currently focuses on inspection. It does not install packages, delete files, or execute commands from the command vault.
-
-## Website development
-
-    cd website
-    npm install
-    npm run dev
-
-Ghost is actively being developed.
+```bash
+git clone https://github.com/uatimuu-cmyk/ghost.git
+cd ghost
+python -m venv .venv

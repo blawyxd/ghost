@@ -16,3 +16,6 @@ htmlcov/
 website/node_modules/
 website/dist/
 website/.astro/
+
+build/
+dist/
