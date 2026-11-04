@@ -1,0 +1,104 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="Documentation" description="Installation instructions and command reference for Ghost.">
+  <div class="docs-heading">
+    <h1>Documentation<span class="dot">.</span></h1>
+    <p>Everything currently available in Ghost, from installation to the command reference.</p>
+  </div>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <span class="sidebar-label">ON THIS PAGE</span>
+      <a href="#installation">Installation</a>
+      <a href="#first-run">First run</a>
+      <a href="#commands">Commands</a>
+      <a href="#safety">Safety</a>
+    </aside>
+
+    <article class="docs-content">
+      <section id="installation">
+        <span class="section-index">01 / GETTING STARTED</span>
+        <h2>Installation</h2>
+        <p>Ghost currently targets Linux. You need Python 3.10 or newer and Git.</p>
+        <h3>Clone the repository</h3>
+        <pre><code>git clone https://github.com/uatimuu-cmyk/ghost.git
+cd ghost</code></pre>
+        <h3>Create a virtual environment</h3>
+        <pre><code>python -m venv .venv
+source .venv/bin/activate</code></pre>
+        <p>For Fish shell, use:</p>
+        <pre><code>source .venv/bin/activate.fish</code></pre>
+        <h3>Install Ghost</h3>
+        <pre><code>python -m pip install -e .</code></pre>
+      </section>
+
+      <section id="first-run">
+        <span class="section-index">02 / FIRST RUN</span>
+        <h2>Using Ghost</h2>
+        <p>Run Ghost without arguments to open the home screen:</p>
+        <pre><code>ghost</code></pre>
+        <p>For built-in help:</p>
+        <pre><code>ghost --help</code></pre>
+      </section>
+
+      <section id="commands">
+        <span class="section-index">03 / COMMAND REFERENCE</span>
+        <h2>Commands</h2>
+        <div class="command-row">
+          <code>ghost help</code>
+          <p>Show the available Ghost commands.</p>
+        </div>
+        <div class="command-row">
+          <code>ghost updates</code>
+          <p>Check available package updates using pacman. This does not install updates and is intended for Arch-based distributions.</p>
+        </div>
+        <div class="command-row">
+          <code>ghost disk</code>
+          <p>Display used space, free space, total capacity and usage percentage for your home and root filesystems.</p>
+        </div>
+        <div class="command-row">
+          <code>ghost large</code>
+          <p>Search your home directory for files of at least 500 MiB. The scan checks up to 12,000 files and displays up to 12 results. It does not delete anything.</p>
+        </div>
+        <div class="command-row">
+          <code>ghost vault</code>
+          <p>Display useful Linux commands for inspecting your system. These commands are shown as text and are not executed automatically.</p>
+        </div>
+      </section>
+
+      <section id="safety">
+        <span class="section-index">04 / SAFETY</span>
+        <h2>Read-only by design</h2>
+        <p>The current Ghost tools are designed to inspect your system. They do not install packages, delete files, run maintenance operations or execute commands from the vault.</p>
+        <p>Always inspect a command before choosing to run it yourself.</p>
+      </section>
+    </article>
+  </div>
+</PageLayout>
+
+<style>
+  .docs-heading { margin-bottom: 65px; }
+  .docs-heading > p { max-width: 560px; }
+  .docs-layout { display: grid; grid-template-columns: 175px minmax(0, 1fr); gap: 55px; align-items: start; }
+  .docs-sidebar { position: sticky; top: 35px; display: flex; flex-direction: column; gap: 15px; border-left: 1px solid #292929; padding-left: 18px; }
+  .sidebar-label, .section-index { color: #666; font-size: 9px; font-weight: 800; letter-spacing: 1.5px; }
+  .docs-sidebar a { color: #888; font-size: 12px; transition: color .2s; }
+  .docs-sidebar a:hover { color: #fff; }
+  .docs-content section { scroll-margin-top: 35px; margin-bottom: 85px; }
+  .docs-content h2 { margin: 15px 0; font-size: 28px; }
+  .docs-content h3 { margin: 28px 0 10px; }
+  .docs-content p { margin: 12px 0; }
+  .docs-content pre { overflow-x: auto; padding: 18px; background: #111; border: 1px solid #292929; color: #ddd; line-height: 1.7; }
+  .docs-content pre code { padding: 0; background: none; font-size: 12px; }
+  .command-row { padding: 20px 0; border-top: 1px solid #292929; }
+  .command-row > code { display: inline-block; margin-bottom: 8px; }
+  .command-row p { margin: 0; }
+  @media(max-width: 700px) {
+    .docs-layout { grid-template-columns: 1fr; gap: 35px; }
+    .docs-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); }
+    .sidebar-label { grid-column: 1 / -1; }
+    .docs-content section { margin-bottom: 60px; }
+  }
+</style>

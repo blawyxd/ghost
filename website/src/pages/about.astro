@@ -1,0 +1,43 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="About" description="About Ghost, an open-source Linux companion built by blawy.">
+  <p class="about-kicker">A SMALL PROJECT WITH A CLEAR PURPOSE</p>
+  <h1>Linux should make sense<span class="dot">.</span></h1>
+  <p class="about-intro">Ghost is an open-source Linux companion built to make exploring your system less intimidating, without hiding the tools and ideas behind it.</p>
+
+  <div class="about-rule"></div>
+
+  <section>
+    <span class="section-index">01 / THE IDEA</span>
+    <h2>Understand, do not just copy.</h2>
+    <p>Finding a command is easy. Knowing what it does, why you need it, and whether it is safe to run is the harder part. Ghost aims to make that process clearer.</p>
+  </section>
+
+  <section>
+    <span class="section-index">02 / THE APPROACH</span>
+    <h2>Useful before complicated.</h2>
+    <p>Ghost starts with a small set of practical system tools and explanations. The goal is to build something genuinely helpful, not another dashboard full of features that do very little.</p>
+  </section>
+
+  <section class="about-meta">
+    <div><span class="section-index">BUILT BY</span><p>blawy</p></div>
+    <div><span class="section-index">BUILT WITH</span><p>Python · Typer · Rich · Astro</p></div>
+    <div><span class="section-index">SOURCE CODE</span><p><a href="https://github.com/uatimuu-cmyk/ghost">GitHub ↗</a></p></div>
+  </section>
+</PageLayout>
+
+<style>
+  .about-kicker, .section-index { color: #666; font-size: 9px; font-weight: 800; letter-spacing: 1.5px; }
+  .about-kicker { margin-bottom: 24px; }
+  .about-intro { max-width: 610px; font-size: 17px; line-height: 1.8; }
+  .about-rule { height: 1px; background: #292929; margin: 65px 0; }
+  section { margin: 0 0 60px; }
+  section h2 { margin: 13px 0; font-size: 25px; }
+  section > p { max-width: 620px; }
+  .about-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid #292929; padding-top: 25px; }
+  .about-meta p { color: #ddd; font-size: 12px; }
+  .about-meta a { border-bottom: 1px solid #666; padding-bottom: 3px; }
+  @media(max-width: 600px) { .about-meta { grid-template-columns: 1fr; gap: 8px; } }
+</style>

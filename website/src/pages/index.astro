@@ -1,0 +1,734 @@
+---
+const navigation = [
+  { label: "HOME", href: "/", number: "01" },
+  { label: "DOCS", href: "/docs/", number: "02" },
+  { label: "LINUX", href: "/linux/", number: "03" },
+  { label: "ABOUT", href: "/about/", number: "04" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <meta
+      name="description"
+      content="Ghost is a Linux companion built to help you understand and explore your system."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>ghost. — Linux companion</title>
+  </head>
+
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Ghost home">
+          <img class="brand-mark" src="/favicon.svg?v=2" alt="" />
+          <span>ghost<span class="brand-dot">.</span></span>
+        </a>
+
+        <nav aria-label="Main navigation">
+          {navigation.map((item) => (
+            <a href={item.href}>
+              <span class="nav-number">{item.number}</span>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <a class="source-link" href="https://github.com">
+          SOURCE <span>↗</span>
+        </a>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="hero-meta">
+            <span><span class="status-dot"></span> PROJECT / GHOST</span>
+            <span>LINUX COMPANION · 001</span>
+          </div>
+
+          <div class="hero-content">
+            <p class="eyebrow">A BETTER WAY TO UNDERSTAND LINUX</p>
+
+            <h1>
+              <span class="hover-text">Linux,</span><br />
+              <span><span class="hover-text">without</span> <span class="hover-text">the</span></span><br />
+              <span class="hover-text">headache</span><span class="brand-dot">.</span>
+            </h1>
+
+            <div class="hero-bottom">
+              <p class="hero-description">
+                Explore your system, understand your tools and learn Linux
+                along the way. One command at a time.
+              </p>
+
+              <div class="hero-actions">
+                <a class="primary-button" href="/docs/">
+                  EXPLORE DOCUMENTATION <span>↗</span>
+                </a>
+                <a class="text-button" href="/about/">ABOUT GHOST →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-index">G / 001</div>
+        </section>
+
+        <section class="terminal-section" aria-label="Example Ghost command">
+          <div class="section-heading">
+            <span>01 / IN YOUR TERMINAL</span>
+            <span>EXAMPLE SESSION</span>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-lights">
+                <span></span><span></span><span></span>
+              </div>
+              <span>ghost — fish</span>
+              <span class="terminal-status">LOCAL SESSION</span>
+            </div>
+
+            <div class="terminal-content">
+              <p class="terminal-line">
+                <span class="prompt">~</span>
+                <span class="command">ghost explain chmod</span>
+              </p>
+
+              <div class="terminal-output">
+                <p class="output-title">◈ chmod</p>
+                <p>Change the permissions of a file or directory.</p>
+                <div class="terminal-example">
+                  <span class="muted">$</span> chmod u+x script.sh
+                </div>
+                <p class="muted">
+                  Adds execute permission for the file owner.
+                </p>
+              </div>
+
+              <p class="terminal-line next-command">
+                <span class="prompt">~</span>
+                <span class="cursor"></span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="directory" id="docs">
+          <div class="section-heading">
+            <span>02 / DIRECTORY</span>
+            <span>EXPLORE GHOST</span>
+          </div>
+
+          <a class="directory-item" href="/docs/">
+            <span class="directory-number">01</span>
+            <span class="directory-title">Documentation</span>
+            <span class="directory-description">
+              Learn how Ghost works and how to use it.
+            </span>
+            <span class="directory-arrow">↗</span>
+          </a>
+
+          <a class="directory-item" href="/linux/">
+            <span class="directory-number">02</span>
+            <span class="directory-title">Linux knowledge</span>
+            <span class="directory-description">
+              Commands, concepts and practical guides.
+            </span>
+            <span class="directory-arrow">↗</span>
+          </a>
+
+          <a class="directory-item" href="/about/">
+            <span class="directory-number">03</span>
+            <span class="directory-title">About the project</span>
+            <span class="directory-description">
+              The thinking and development behind Ghost.
+            </span>
+            <span class="directory-arrow">↗</span>
+          </a>
+        </section>
+
+        <section class="linux-section" id="linux">
+          <div class="section-heading">
+            <span>03 / PHILOSOPHY</span>
+            <span>WHY GHOST EXISTS</span>
+          </div>
+
+          <h2>
+            You shouldn't need to know everything
+            <span>to understand something.</span>
+          </h2>
+
+          <p>
+            Linux can be complicated. Ghost is being built to make exploring
+            it easier, without hiding how things actually work.
+          </p>
+        </section>
+      </main>
+
+      <footer id="about">
+        <a class="brand" href="/">
+          <img class="brand-mark" src="/favicon.svg?v=2" alt="" />
+          <span>ghost<span class="brand-dot">.</span></span>
+        </a>
+
+        <span>BUILT FOR THE CURIOUS.</span>
+        <span>GHOST PROJECT · 2026</span>
+          <span class="copyright">© 2026 blawy</span>
+      </footer>
+    </div>
+    <script>
+    document.querySelectorAll("h1 .hover-text").forEach((word) => {
+      const text = word.textContent ?? "";
+      word.replaceChildren(...Array.from(text, (character) => {
+        const letter = document.createElement("span");
+        letter.className = "hover-letter";
+        letter.textContent = character;
+        return letter;
+      }));
+    });
+  </script>
+
+<script>
+  const revealItems = document.querySelectorAll("main section, main .terminal, main .directory, footer");
+
+  revealItems.forEach((item) => {
+    item.dataset.reveal = "";
+    Array.from(item.children).forEach((child, index) => {
+      child.style.setProperty("--reveal-delay", `${index * 90}ms`);
+    });
+  });
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.02, rootMargin: "0px 0px -10px 0px" });
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+
+  const hero = document.querySelector(".hero");
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    if (!hero || ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const offset = Math.min(window.scrollY, 500);
+      hero.style.transform = `translate3d(0, ${offset * -0.28}px, 0)`;
+      ticking = false;
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
+
+<style>
+  :root {
+    color-scheme: dark;
+    font-family: "Atkinson Hyperlegible", "Arial", sans-serif;
+    background: #0a0a0a;
+    color: #ededed;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    --background: #0a0a0a;
+    --surface: #101010;
+    --border: #292929;
+    --muted: #777;
+    --white: #ededed;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-shell {
+    width: min(1120px, calc(100% - 64px));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+  }
+
+  .brand-mark {
+    width: 23px;
+    height: 23px;
+    display: block;
+  }
+
+  .brand-dot {
+    color: #999;
+  }
+
+  nav {
+    display: flex;
+    gap: 27px;
+  }
+
+  nav a,
+  .source-link {
+    color: #aaa;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 150ms ease;
+  }
+
+  nav a:hover,
+  .source-link:hover {
+    color: white;
+  }
+
+  .nav-number {
+    color: #666;
+    margin-right: 5px;
+  }
+
+  .source-link span {
+    margin-left: 5px;
+  }
+
+  .hero {
+    position: relative;
+    padding: 25px 0 75px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-meta,
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    background: #aaa;
+    border-radius: 50%;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    padding: 100px 0 0 8%;
+  }
+
+  .eyebrow {
+    color: #999;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  h1 {
+    margin: 25px 0 30px;
+    font-size: clamp(64px, 10vw, 112px);
+    line-height: 0.91;
+    letter-spacing: -8px;
+    font-weight: 800;
+  }
+
+  h1 > span:not(.brand-dot) {
+    color: #777;
+  }
+
+  h1 > .hover-text:first-child {
+    color: #ededed;
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  .hero-description {
+    max-width: 330px;
+    color: #999;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 18px;
+  }
+
+  .primary-button {
+    padding: 14px 17px;
+    background: var(--white);
+    color: #0a0a0a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+  }
+
+  .primary-button span {
+    margin-left: 15px;
+  }
+
+  .text-button {
+    color: #999;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .hero-index {
+    position: absolute;
+    right: 0;
+    bottom: 25px;
+    color: #555;
+    font-size: 10px;
+  }
+
+  .terminal-section,
+  .directory,
+  .linux-section {
+    padding: 55px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .terminal {
+    margin-top: 25px;
+    border: 1px solid #303030;
+    background: #0d0d0d;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 39px;
+    padding: 0 14px;
+    border-bottom: 1px solid var(--border);
+    color: #888;
+    font-size: 10px;
+  }
+
+  .terminal-lights {
+    display: flex;
+    gap: 5px;
+  }
+
+  .terminal-lights span {
+    width: 7px;
+    height: 7px;
+    border: 1px solid #666;
+    border-radius: 50%;
+  }
+
+  .terminal-status {
+    color: #666;
+    letter-spacing: 1px;
+  }
+
+  .terminal-content {
+    min-height: 230px;
+    padding: 25px;
+    font-family: monospace;
+    font-size: 12px;
+  }
+
+  .terminal-line {
+    display: flex;
+    gap: 12px;
+  }
+
+  .prompt {
+    color: #aaa;
+  }
+
+  .command,
+  .output-title {
+    color: #eee;
+    font-weight: 700;
+  }
+
+  .terminal-output {
+    margin: 25px 0 25px 25px;
+    color: #aaa;
+    line-height: 1.7;
+  }
+
+  .output-title {
+    margin-bottom: 8px;
+  }
+
+  .terminal-example {
+    margin: 15px 0;
+    padding: 12px;
+    border-left: 2px solid #777;
+    background: #151515;
+    color: #eee;
+  }
+
+  .muted {
+    color: #666;
+  }
+
+  .cursor {
+    width: 7px;
+    height: 14px;
+    background: #aaa;
+    animation: blink 1.1s steps(2, start) infinite;
+  }
+
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+
+  .directory-item {
+    display: grid;
+    grid-template-columns: 55px 1fr 1fr 20px;
+    align-items: center;
+    gap: 15px;
+    padding: 23px 0;
+    border-bottom: 1px solid var(--border);
+    transition: padding 150ms ease;
+  }
+
+  .directory-item:hover {
+    padding-left: 8px;
+  }
+
+  .directory-number,
+  .directory-description {
+    color: #777;
+    font-size: 11px;
+  }
+
+  .directory-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+  }
+
+  .directory-arrow {
+    color: #999;
+    text-align: right;
+  }
+
+  .linux-section h2 {
+    max-width: 700px;
+    margin: 55px 0 20px;
+    font-size: clamp(35px, 6vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -3px;
+  }
+
+  .linux-section h2 span {
+    color: #777;
+  }
+
+  .linux-section p {
+    max-width: 450px;
+    color: #999;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  footer {
+    min-height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  footer > span {
+    color: #777;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 700px) {
+    .site-shell {
+      width: calc(100% - 36px);
+    }
+
+    .topbar {
+      height: auto;
+      min-height: 70px;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 15px 0;
+    }
+
+    nav {
+      order: 3;
+      width: 100%;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    nav a {
+      font-size: 9px;
+    }
+
+    .hero-content {
+      padding: 75px 0 0;
+    }
+
+    h1 {
+      font-size: clamp(58px, 14vw, 85px);
+      letter-spacing: -5px;
+    }
+
+    .hero-bottom {
+      align-items: start;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .hero-actions {
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .directory-item {
+      grid-template-columns: 30px 1fr 20px;
+      gap: 10px;
+    }
+
+    .directory-description {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .directory-arrow {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    footer {
+      flex-wrap: wrap;
+      padding: 25px 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  body {
+    cursor: default;
+  }
+
+  a, button {
+    cursor: pointer;
+  }
+
+  .hover-text {
+    display: inline-block;
+    cursor: default;
+    user-select: none;
+    transform-origin: left center;
+    transition: transform 160ms ease, color 160ms ease, text-shadow 160ms ease;
+  }
+
+  :global(.hover-letter) {
+    display: inline-block;
+    position: relative;
+    transform-origin: center bottom;
+    transition: transform 180ms ease, filter 180ms ease;
+  }
+
+  :global(.hover-letter:hover) {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  }
+
+  body {
+    cursor: default;
+  }
+
+
+html { scroll-behavior: smooth; }
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(70px) scale(.97);
+  filter: blur(5px);
+  transition: opacity 1000ms cubic-bezier(.16,1,.3,1), transform 750ms cubic-bezier(.2,.7,.2,1), filter 1000ms cubic-bezier(.16,1,.3,1);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+[data-reveal] > * {
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.hero {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+</style>
