@@ -11,7 +11,7 @@ Ghost is a modular Linux companion CLI, designed primarily for CachyOS. It provi
 ## Install for development
 
 ```bash
-git clone https://github.com/uatimuu-cmyk/ghost.git
+git clone https://github.com/blawyxd/ghost.git
 cd ghost
 python -m venv .venv
 . .venv/bin/activate
@@ -61,4 +61,4 @@ python -m compileall -q main.py ghost tests
 ## Links
 
 - [Project documentation](website/src/pages/docs.astro)
-- [Report an issue](https://github.com/uatimuu-cmyk/ghost/issues)
+- [Report an issue](https://github.com/blawyxd/ghost/issues)
