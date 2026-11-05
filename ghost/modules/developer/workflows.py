@@ -11,10 +11,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-try:  # tomllib ships with Python 3.11; Ghost also supports Python 3.10.
+try:
     import tomllib
-except ModuleNotFoundError:  # pragma: no cover - exercised on Python 3.10
-    tomllib = None  # type: ignore[assignment]
+except ModuleNotFoundError:
+    import tomli as tomllib
 
 import typer
 from rich.console import Console
