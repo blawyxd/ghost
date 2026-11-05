@@ -114,7 +114,7 @@ class DeveloperWorkflowTests(unittest.TestCase):
             ), patch("ghost.modules.developer.workflows._run_project_command") as run:
                 install_dependencies(Console(file=output), root)
             run.assert_not_called()
-            self.assertIn("pip install", output.getvalue())
+            self.assertIn("pip install", " ".join(output.getvalue().split()))
             self.assertIn("cancelled", output.getvalue())
 
     def test_env_check_never_displays_values(self) -> None:
