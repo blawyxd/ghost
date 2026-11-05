@@ -2,103 +2,630 @@
 import PageLayout from "../layouts/PageLayout.astro";
 ---
 
-<PageLayout title="Documentation" description="Installation instructions and command reference for Ghost.">
-  <div class="docs-heading">
-    <h1>Documentation<span class="dot">.</span></h1>
-    <p>Everything currently available in Ghost, from installation to the command reference.</p>
-  </div>
+<PageLayout title="Documentation" description="Installation, commands, developer tools and Python learning documentation for Ghost.">
+  <div class="docs-page">
+    <div class="docs-heading" data-reveal>
+      <h1>Documentation<span class="dot">.</span></h1>
+      <p>Everything you need to use Ghost. From understanding your Linux system to building your own projects.</p>
+    </div>
 
-  <div class="docs-layout">
-    <aside class="docs-sidebar">
-      <span class="sidebar-label">ON THIS PAGE</span>
-      <a href="#installation">Installation</a>
-      <a href="#first-run">First run</a>
-      <a href="#commands">Commands</a>
-      <a href="#safety">Safety</a>
-    </aside>
+    <div class="docs-layout">
+      <aside class="docs-sidebar" data-reveal>
+        <span class="sidebar-label">ON THIS PAGE</span>
+        <a href="#installation">Installation</a>
+        <a href="#first-run">Getting started</a>
+        <a href="#system">System diagnostics</a>
+        <a href="#storage">Storage and maintenance</a>
+        <a href="#backups">Backups and security</a>
+        <a href="#developer">Developer tools</a>
+        <a href="#learning">Python learning</a>
+        <a href="#exercises">Exercises</a>
+        <a href="#projects">Projects</a>
+        <a href="#gamemode">Game Mode</a>
+        <a href="#safety">Safety</a>
+        <a href="#other">Additional commands</a>
+        <a href="#testing">Running tests</a>
+      </aside>
 
-    <article class="docs-content">
-      <section id="installation">
-        <span class="section-index">01 / GETTING STARTED</span>
-        <h2>Installation</h2>
-        <p>Ghost currently targets Linux. You need Python 3.10 or newer and Git.</p>
-        <h3>Clone the repository</h3>
-        <pre><code>git clone https://github.com/uatimuu-cmyk/ghost.git
+      <article class="docs-content">
+        <section id="installation">
+          <span class="section-index">01 / GETTING STARTED</span>
+          <h2>Installation</h2>
+          <p>Ghost is a Linux companion CLI, designed primarily for CachyOS and other Arch-based distributions. It requires Python 3.10 or newer.</p>
+
+          <h3>Requirements</h3>
+          <ul>
+            <li>Linux</li>
+            <li>Python 3.10 or newer</li>
+            <li>Git</li>
+            <li>pip</li>
+          </ul>
+          <p>Some system reports use optional tools such as <code>lspci</code>, <code>smartctl</code>, <code>systemctl</code> and <code>pacman</code>.</p>
+
+          <h3>Clone the repository</h3>
+          <pre><code>git clone https://github.com/blawyxd/ghost.git
 cd ghost</code></pre>
-        <h3>Create a virtual environment</h3>
-        <pre><code>python -m venv .venv
-source .venv/bin/activate</code></pre>
-        <p>For Fish shell, use:</p>
-        <pre><code>source .venv/bin/activate.fish</code></pre>
-        <h3>Install Ghost</h3>
-        <pre><code>python -m pip install -e .</code></pre>
-      </section>
 
-      <section id="first-run">
-        <span class="section-index">02 / FIRST RUN</span>
-        <h2>Using Ghost</h2>
-        <p>Run Ghost without arguments to open the home screen:</p>
-        <pre><code>ghost</code></pre>
-        <p>For built-in help:</p>
-        <pre><code>ghost --help</code></pre>
-      </section>
+          <h3>Create a virtual environment</h3>
+          <pre><code>python -m venv .venv</code></pre>
 
-      <section id="commands">
-        <span class="section-index">03 / COMMAND REFERENCE</span>
-        <h2>Commands</h2>
-        <div class="command-row">
-          <code>ghost help</code>
-          <p>Show the available Ghost commands.</p>
-        </div>
-        <div class="command-row">
-          <code>ghost updates</code>
-          <p>Check available package updates using pacman. This does not install updates and is intended for Arch-based distributions.</p>
-        </div>
-        <div class="command-row">
-          <code>ghost disk</code>
-          <p>Display used space, free space, total capacity and usage percentage for your home and root filesystems.</p>
-        </div>
-        <div class="command-row">
-          <code>ghost large</code>
-          <p>Search your home directory for files of at least 500 MiB. The scan checks up to 12,000 files and displays up to 12 results. It does not delete anything.</p>
-        </div>
-        <div class="command-row">
-          <code>ghost vault</code>
-          <p>Display useful Linux commands for inspecting your system. These commands are shown as text and are not executed automatically.</p>
-        </div>
-      </section>
+          <p><strong>Bash / Zsh:</strong></p>
+          <pre><code>source .venv/bin/activate</code></pre>
+          <p><strong>Fish:</strong></p>
+          <pre><code>source .venv/bin/activate.fish</code></pre>
 
-      <section id="safety">
-        <span class="section-index">04 / SAFETY</span>
-        <h2>Read-only by design</h2>
-        <p>The current Ghost tools are designed to inspect your system. They do not install packages, delete files, run maintenance operations or execute commands from the vault.</p>
-        <p>Always inspect a command before choosing to run it yourself.</p>
-      </section>
-    </article>
+          <h3>Install Ghost</h3>
+          <pre><code>python -m pip install -e .</code></pre>
+          <p>The editable install makes the <code>ghost</code> command available inside the active virtual environment while keeping it linked to your local source files.</p>
+        </section>
+
+        <section id="first-run">
+          <span class="section-index">02 / FIRST RUN</span>
+          <h2>Getting started</h2>
+          <p>Run Ghost without arguments to open its home screen.</p>
+          <pre><code>ghost</code></pre>
+          <p>Display the available commands:</p>
+          <pre><code>ghost --help
+ghost help</code></pre>
+          <p>Every command also has its own help output:</p>
+          <pre><code>ghost COMMAND --help</code></pre>
+          <p>For example:</p>
+          <pre><code>ghost hardware --help
+ghost exercise --help
+ghost serve --help</code></pre>
+        </section>
+
+        <section id="system">
+          <span class="section-index">03 / SYSTEM</span>
+          <h2>System diagnostics</h2>
+          <p>These commands inspect your system and report information. They do not change system settings.</p>
+
+          <div class="command-row">
+            <code>ghost doctor</code>
+            <p>Run a general system health check and identify common problems.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost hardware</code>
+            <p>Display detailed hardware information, including available CPU, GPU, memory and storage details.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost processes</code>
+            <p>View running processes and their resource usage.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost services</code>
+            <p>Inspect systemd services and their current states.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost network</code>
+            <p>Inspect network interfaces and connectivity information.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost ports</code>
+            <p>Display listening network ports.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost logs</code>
+            <p>Display recent system journal entries.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost updates</code>
+            <p>Check for available package updates using pacman. This does not install updates and is intended for Arch-based distributions.</p>
+          </div>
+        </section>
+
+        <section id="storage">
+          <span class="section-index">04 / STORAGE</span>
+          <h2>Storage and maintenance</h2>
+          <p>Inspect disk usage and identify files or dependencies that may need attention.</p>
+
+          <div class="command-row">
+            <code>ghost disk</code>
+            <p>Show filesystem capacity, used space, available space and usage percentages.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost large</code>
+            <p>Search your home directory for large files. The scan is limited to avoid an unbounded search. It does not delete anything.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost cache</code>
+            <p>Inspect the size and usage of your user cache.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost temp</code>
+            <p>Inspect temporary storage without deleting anything.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost orphans</code>
+            <p>Identify unneeded pacman dependencies. Ghost reports them but does not remove them.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost clean</code>
+            <p>Preview the contents and estimated size of your user cache, then ask for confirmation before removing entries. Applications may need to rebuild their caches.</p>
+          </div>
+        </section>
+
+        <section id="backups">
+          <span class="section-index">05 / BACKUPS</span>
+          <h2>Backups and security</h2>
+
+          <div class="command-row">
+            <code>ghost backup</code>
+            <p>Create a local archive of configuration files from <code>~/.config</code>.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost backups</code>
+            <p>List locally stored configuration backups.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost restore-backup ARCHIVE_NAME</code>
+            <p>Restore missing configuration files from a selected archive. Ghost previews the changes and does not overwrite files that already exist.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost security</code>
+            <p>Run basic security checks and report potential issues.</p>
+          </div>
+          <p>Configuration backups can contain private settings, credentials or tokens. Keep them somewhere secure.</p>
+        </section>
+
+        <section id="developer">
+          <span class="section-index">06 / DEVELOPMENT</span>
+          <h2>Developer tools</h2>
+          <p>Ghost includes utilities for inspecting and working with software projects.</p>
+
+          <div class="command-row">
+            <code>ghost dev</code>
+            <p>Detect installed development tools.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost git [ACTION]</code>
+            <p>Inspect a Git repository. Supported actions include <code>status</code>, <code>diff</code>, <code>log</code>, <code>branches</code> and <code>remotes</code>. The default action is <code>status</code>.</p>
+            <pre><code>ghost git
+ghost git diff
+ghost git branches</code></pre>
+          </div>
+          <div class="command-row">
+            <code>ghost project [DIRECTORY]</code>
+            <p>Inspect a project, detect its type, find its virtual environment and examine its directory structure.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost project-deps [DIRECTORY]</code>
+            <p>List dependencies declared by a Python project.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost env</code>
+            <p>Inspect the active Python environment.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost deps</code>
+            <p>List installed Python dependencies.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost vars</code>
+            <p>Check whether selected environment variables are present without displaying their values.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost install-deps [DIRECTORY]</code>
+            <p>Review the dependencies declared by a detected project and ask for confirmation before installing them.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost test [DIRECTORY]</code>
+            <p>Detect and run a project's test suite.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost build [DIRECTORY]</code>
+            <p>Build supported Python, Node.js or Rust projects.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost serve [DIRECTORY]</code>
+            <p>Start a supported static, Django or npm development server in the foreground. Options include <code>--host</code>, <code>--port</code> and <code>--script</code>.</p>
+            <pre><code>ghost serve
+ghost serve --host 127.0.0.1 --port 8000</code></pre>
+          </div>
+          <p>Project tests, builds and development servers execute project tools or code. Only run them in projects you trust.</p>
+        </section>
+
+        <section id="learning">
+          <span class="section-index">07 / LEARN</span>
+          <h2>Python learning</h2>
+          <p>Ghost includes a structured Python course with 24 lessons, progressing from programming fundamentals to more advanced application design.</p>
+
+          <h3>Course topics</h3>
+          <ul>
+            <li><strong>Beginner:</strong> variables, values, operators, input, conditions, loops and functions.</li>
+            <li><strong>Intermediate:</strong> collections, strings, exceptions, files, modules, classes, generators, type hints, packages, APIs and testing.</li>
+            <li><strong>Advanced:</strong> decorators, context managers, architecture, design patterns, optimisation and building applications.</li>
+          </ul>
+          <p>Lessons contain explanations, runnable examples, walkthroughs, common mistakes, recaps and links to related exercises.</p>
+
+          <h3>Browse the course</h3>
+          <pre><code>ghost learn
+ghost learn LESSON_ID</code></pre>
+          <p>You can select a lesson by its number or ID. Use <code>next</code> to continue from the next incomplete lesson.</p>
+          <p>The current course teaches Python. Other programming languages are not currently supported by the curriculum.</p>
+        </section>
+
+        <section id="exercises">
+          <span class="section-index">08 / PRACTICE</span>
+          <h2>Exercises and hints</h2>
+          <p>Exercises let you apply what you learn. Each exercise includes instructions, starter code, automated test cases, progressive hints and a solution.</p>
+
+          <h3>Browse exercises</h3>
+          <pre><code>ghost exercises</code></pre>
+          <h3>Open an exercise</h3>
+          <pre><code>ghost exercise EXERCISE_ID</code></pre>
+          <h3>Submit a source file</h3>
+          <pre><code>ghost exercise EXERCISE_ID --file answer.py</code></pre>
+          <h3>Get a hint</h3>
+          <pre><code>ghost exercise EXERCISE_ID --hint 1</code></pre>
+          <h3>View the solution</h3>
+          <pre><code>ghost exercise EXERCISE_ID --solution</code></pre>
+
+          <p>Exercises use different test modes: function-based submissions, complete scripts and HTTP exercises with mocked responses. HTTP exercises do not contact a live API.</p>
+          <p><strong>Important:</strong> submitted code runs in a separate timed Python process and temporary working directory. This is not a security sandbox. It can still access your files, network and other system resources. Only run code you trust.</p>
+        </section>
+
+        <section id="projects">
+          <span class="section-index">09 / BUILD</span>
+          <h2>Learning projects</h2>
+          <p>Ghost includes eight progressive Python projects that turn course concepts into larger pieces of software.</p>
+
+          <h3>Browse projects</h3>
+          <pre><code>ghost projects</code></pre>
+          <h3>Open a project</h3>
+          <pre><code>ghost projects PROJECT_ID</code></pre>
+          <h3>Complete a milestone</h3>
+          <pre><code>ghost projects PROJECT_ID --complete-milestone 1</code></pre>
+          <p>Milestones must be completed in order. You cannot skip ahead.</p>
+
+          <h3>Review a project directory</h3>
+          <pre><code>ghost projects PROJECT_ID --review ./my-project</code></pre>
+          <p>The project reviewer performs read-only structural checks. It can check for Python source files, tests, syntax errors and certain project files. It does not execute your project, run its tests or prove that the application works correctly. Review the acceptance criteria and run your own tests as well.</p>
+        </section>
+
+        <section id="gamemode">
+          <span class="section-index">10 / PROGRESSION</span>
+          <h2>Game Mode</h2>
+          <p>Learning progression is optional. You can use the entire course without enabling gamification.</p>
+
+          <h3>Enable Game Mode</h3>
+          <pre><code>ghost learning on</code></pre>
+          <h3>Disable Game Mode</h3>
+          <pre><code>ghost learning off</code></pre>
+          <h3>Check its status</h3>
+          <pre><code>ghost learning status</code></pre>
+          <p>When enabled, you can earn XP, gain levels, build streaks and unlock achievements. XP is earned through learning activities such as completing lessons, exercises and project milestones.</p>
+          <p>Disabling Game Mode does not delete your saved progress. Your lessons, exercises and projects remain usable without it.</p>
+
+          <h3>View your progress</h3>
+          <pre><code>ghost progress</code></pre>
+          <h3>Other learning references</h3>
+          <pre><code>ghost glossary
+ghost cheatsheet</code></pre>
+          <p>Use the glossary for programming terminology and the cheatsheet for a quick Python reference.</p>
+        </section>
+
+        <section id="safety">
+          <span class="section-index">11 / SAFETY</span>
+          <h2>Safety and permissions</h2>
+          <p>Ghost is designed to make system inspection straightforward without silently changing your machine.</p>
+          <ul>
+            <li>System reports are read-only.</li>
+            <li>Cache cleanup previews the operation and asks for confirmation.</li>
+            <li>Configuration restoration previews changes and skips existing files.</li>
+            <li>Dependency installation requires confirmation.</li>
+            <li>Ghost does not install system packages.</li>
+            <li>Project commands and exercise submissions may execute code.</li>
+          </ul>
+          <p>Some reports depend on optional system tools or permissions. Ghost reports when a tool or permission is unavailable rather than assuming it can access everything.</p>
+          <p>Never treat the exercise runner as a sandbox. Do not submit untrusted code.</p>
+        </section>
+
+        <section id="other">
+          <span class="section-index">12 / OTHER</span>
+          <h2>Additional commands</h2>
+          <div class="command-row">
+            <code>ghost vault</code>
+            <p>Display saved useful Linux commands. They are shown as text and are not executed automatically.</p>
+          </div>
+          <div class="command-row">
+            <code>ghost help</code>
+            <p>Display the command overview.</p>
+          </div>
+          <p><code>ghost ship</code> is a maintainer-only publishing command. It is not part of the normal user workflow.</p>
+        </section>
+
+        <section id="testing">
+          <span class="section-index">13 / CONTRIBUTING</span>
+          <h2>Running tests</h2>
+          <p>From the repository root, activate your virtual environment and run:</p>
+          <pre><code>python -m unittest discover -s tests -v
+python -m compileall -q main.py ghost tests</code></pre>
+          <p>These commands run the Python test suite and check the source files for compilation errors.</p>
+        </section>
+      </article>
+    </div>
   </div>
 </PageLayout>
 
+<script>
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  // Split headings into individual hoverable letters.
+  if (!reduceMotion) {
+    document.querySelectorAll(
+      ".docs-heading h1, .docs-content h2, .docs-content h3"
+    ).forEach((heading) => {
+      const originalText = heading.textContent ?? "";
+      heading.setAttribute("aria-label", originalText);
+
+      Array.from(heading.childNodes).forEach((node) => {
+        if (node.nodeType !== Node.TEXT_NODE || !node.textContent) return;
+
+        const letters = Array.from(node.textContent, (character) => {
+          if (character.trim() === "") {
+            return document.createTextNode(character);
+          }
+
+          const letter = document.createElement("span");
+          letter.className = "hover-letter";
+          letter.textContent = character;
+          return letter;
+        });
+
+        node.replaceWith(...letters);
+      });
+    });
+  }
+
+  // Reveal content as it enters the viewport.
+  const revealItems = document.querySelectorAll(
+    ".docs-heading, .docs-sidebar, .docs-content section, .docs-content .command-row"
+  );
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  } else {
+    revealItems.forEach((item, index) => {
+      item.dataset.reveal = "";
+      item.style.setProperty(
+        "--reveal-delay",
+        `${(index % 4) * 75}ms`
+      );
+    });
+
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.06,
+      rootMargin: "0px 0px -20px 0px"
+    });
+
+    revealItems.forEach((item) => observer.observe(item));
+  }
+</script>
+
 <style>
-  .docs-heading { margin-bottom: 65px; }
-  .docs-heading > p { max-width: 560px; }
-  .docs-layout { display: grid; grid-template-columns: 175px minmax(0, 1fr); gap: 55px; align-items: start; }
-  .docs-sidebar { position: sticky; top: 35px; display: flex; flex-direction: column; gap: 15px; border-left: 1px solid #292929; padding-left: 18px; }
-  .sidebar-label, .section-index { color: #666; font-size: 9px; font-weight: 800; letter-spacing: 1.5px; }
-  .docs-sidebar a { color: #888; font-size: 12px; transition: color .2s; }
-  .docs-sidebar a:hover { color: #fff; }
-  .docs-content section { scroll-margin-top: 35px; margin-bottom: 85px; }
-  .docs-content h2 { margin: 15px 0; font-size: 28px; }
-  .docs-content h3 { margin: 28px 0 10px; }
-  .docs-content p { margin: 12px 0; }
-  .docs-content pre { overflow-x: auto; padding: 18px; background: #111; border: 1px solid #292929; color: #ddd; line-height: 1.7; }
-  .docs-content pre code { padding: 0; background: none; font-size: 12px; }
-  .command-row { padding: 20px 0; border-top: 1px solid #292929; }
-  .command-row > code { display: inline-block; margin-bottom: 8px; }
-  .command-row p { margin: 0; }
-  @media(max-width: 700px) {
-    .docs-layout { grid-template-columns: 1fr; gap: 35px; }
-    .docs-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); }
-    .sidebar-label { grid-column: 1 / -1; }
-    .docs-content section { margin-bottom: 60px; }
+  .docs-page {
+    width: 100%;
+  }
+
+  .docs-heading {
+    margin-bottom: 65px;
+  }
+
+  .docs-heading > p {
+    max-width: 560px;
+  }
+
+  .docs-layout {
+    display: grid;
+    grid-template-columns: 175px minmax(0, 1fr);
+    gap: 55px;
+    align-items: start;
+  }
+
+  .docs-sidebar {
+    position: sticky;
+    top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-left: 1px solid #292929;
+    padding-left: 18px;
+  }
+
+  .sidebar-label,
+  .section-index {
+    color: #666;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+  }
+
+  .docs-sidebar a {
+    color: #888;
+    font-size: 12px;
+    transition: color 180ms ease, transform 180ms ease;
+  }
+
+  .docs-sidebar a:hover,
+  .docs-sidebar a:focus-visible {
+    color: #fff;
+    transform: translateX(4px);
+  }
+
+  .docs-content section {
+    scroll-margin-top: 35px;
+    margin-bottom: 85px;
+  }
+
+  .docs-content h2 {
+    margin: 15px 0;
+    font-size: 28px;
+    letter-spacing: -1.5px;
+  }
+
+  .docs-content h3 {
+    margin: 28px 0 10px;
+    font-size: 15px;
+    letter-spacing: -0.4px;
+  }
+
+  .docs-content p {
+    margin: 12px 0;
+  }
+
+  .docs-content ul {
+    padding-left: 22px;
+    margin: 16px 0;
+    color: #aaa;
+    line-height: 1.8;
+  }
+
+  .docs-content li {
+    padding-left: 4px;
+  }
+
+  /* Minimal command blocks */
+
+  .docs-content pre {
+    position: relative;
+    overflow-x: auto;
+    margin: 18px 0;
+    padding: 17px 20px 17px 38px;
+    border: 1px solid #292929;
+    border-radius: 5px;
+    background: #0d0d0d;
+    color: #ddd;
+    line-height: 1.8;
+    transition: border-color 200ms ease, background 200ms ease;
+  }
+
+  .docs-content pre:hover {
+    border-color: #484848;
+    background: #101010;
+  }
+
+  .docs-content pre::before {
+    content: "❯";
+    position: absolute;
+    left: 17px;
+    top: 17px;
+    color: #888;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .docs-content pre code {
+    display: block;
+    padding: 0;
+    background: transparent;
+    color: #ddd;
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre;
+    font-variant-ligatures: none;
+  }
+
+  .command-row {
+    padding: 20px 0;
+    border-top: 1px solid #292929;
+  }
+
+  .command-row > code {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .command-row p {
+    margin: 0;
+  }
+
+  .command-row pre {
+    margin-top: 18px;
+  }
+
+  /* Letter hover */
+
+  :global(.docs-page .hover-letter) {
+    display: inline-block;
+    position: relative;
+    transform-origin: center bottom;
+    transition: transform 180ms ease, filter 180ms ease;
+  }
+
+  :global(.docs-page .hover-letter:hover) {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  }
+
+  /* Scroll reveals */
+
+  :global(.docs-page [data-reveal]) {
+    opacity: 0;
+    transform: translateY(55px) scale(0.98);
+    filter: blur(5px);
+    transition:
+      opacity 850ms cubic-bezier(.16, 1, .3, 1),
+      transform 750ms cubic-bezier(.2, .7, .2, 1),
+      filter 850ms cubic-bezier(.16, 1, .3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  :global(.docs-page [data-reveal].is-visible) {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  @media (max-width: 700px) {
+    .docs-layout {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+
+    .docs-sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar-label {
+      grid-column: 1 / -1;
+    }
+
+    .docs-content section {
+      margin-bottom: 60px;
+    }
+
+    .docs-content pre {
+      padding: 15px 14px 15px 32px;
+    }
+
+    .docs-content pre::before {
+      left: 12px;
+      top: 15px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.docs-page [data-reveal]) {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+
+    :global(.docs-page .hover-letter) {
+      transition: none;
+    }
   }
 </style>

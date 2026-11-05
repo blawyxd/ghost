@@ -2,42 +2,538 @@
 import PageLayout from "../layouts/PageLayout.astro";
 ---
 
-<PageLayout title="About" description="About Ghost, an open-source Linux companion built by blawy.">
-  <p class="about-kicker">A SMALL PROJECT WITH A CLEAR PURPOSE</p>
-  <h1>Linux should make sense<span class="dot">.</span></h1>
-  <p class="about-intro">Ghost is an open-source Linux companion built to make exploring your system less intimidating, without hiding the tools and ideas behind it.</p>
+<PageLayout title="About blawy" description="Developer profile of blawy — a Linux enthusiast building software, experimenting with Python and creating tools.">
+  <div class="about-page">
+    <header class="about-hero" data-reveal>
+      <span class="about-kicker">DEVELOPER PROFILE / 001</span>
+      <h1>Hey, I'm <span class="name hover-text">blawy</span><span class="dot">.</span></h1>
+      <p class="about-intro">
+        Developer, Linux enthusiast and builder of things.
+        Interested in software, terminal interfaces and understanding
+        how everything works under the hood.
+      </p>
+      <div class="about-status">
+        <span class="status-dot"></span>
+        ALWAYS BUILDING SOMETHING
+      </div>
+    </header>
 
-  <div class="about-rule"></div>
+    <div class="about-rule" data-reveal></div>
 
-  <section>
-    <span class="section-index">01 / THE IDEA</span>
-    <h2>Understand, do not just copy.</h2>
-    <p>Finding a command is easy. Knowing what it does, why you need it, and whether it is safe to run is the harder part. Ghost aims to make that process clearer.</p>
-  </section>
+    <section class="about-section" data-reveal>
+      <span class="section-index">01 / INTRODUCTION</span>
+      <h2>Learning by building.</h2>
+      <p>
+        I'm a developer who enjoys experimenting with software,
+        exploring Linux and turning ideas into working projects.
+        I like understanding how things work rather than simply
+        relying on tools without knowing what's happening behind them.
+      </p>
+      <p>
+        A lot of my time goes into coding, tweaking my Linux setup,
+        exploring new technologies and finding better ways to build things.
+        I'm still learning, and that's a big part of why I enjoy development.
+      </p>
+    </section>
 
-  <section>
-    <span class="section-index">02 / THE APPROACH</span>
-    <h2>Useful before complicated.</h2>
-    <p>Ghost starts with a small set of practical system tools and explanations. The goal is to build something genuinely helpful, not another dashboard full of features that do very little.</p>
-  </section>
+    <section class="about-section" data-reveal>
+      <span class="section-index">02 / INTERESTS</span>
+      <h2>What I'm into.</h2>
 
-  <section class="about-meta">
-    <div><span class="section-index">BUILT BY</span><p>blawy</p></div>
-    <div><span class="section-index">BUILT WITH</span><p>Python · Typer · Rich · Astro</p></div>
-    <div><span class="section-index">SOURCE CODE</span><p><a href="https://github.com/uatimuu-cmyk/ghost">GitHub ↗</a></p></div>
-  </section>
+      <div class="interest-grid">
+        <div class="interest">
+          <span class="interest-number">01</span>
+          <h3>Linux</h3>
+          <p>System configuration, terminal workflows, customisation and understanding the operating system.</p>
+        </div>
+
+        <div class="interest">
+          <span class="interest-number">02</span>
+          <h3>Development</h3>
+          <p>Python, software architecture, command-line applications and building useful tools.</p>
+        </div>
+
+        <div class="interest">
+          <span class="interest-number">03</span>
+          <h3>Interfaces</h3>
+          <p>Minimal design, terminal-inspired interfaces and software that feels good to use.</p>
+        </div>
+
+        <div class="interest">
+          <span class="interest-number">04</span>
+          <h3>Learning</h3>
+          <p>Exploring new technologies, solving problems and improving through practical projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" data-reveal>
+      <span class="section-index">03 / PROJECTS</span>
+      <h2>Things I've been building.</h2>
+
+      <div class="project-card">
+        <div class="project-top">
+          <span class="project-type">01 / MAIN PROJECT</span>
+          <span class="project-language">PYTHON</span>
+        </div>
+        <h3>Ghost<span class="dot">.</span></h3>
+        <p>
+          A Linux companion CLI designed to make system management,
+          diagnostics and development easier. It also includes a
+          structured Python learning experience with exercises,
+          projects and optional progression.
+        </p>
+        <div class="project-tags">
+          <span>Python</span>
+          <span>Typer</span>
+          <span>Rich</span>
+          <span>Linux</span>
+          <span>Astro</span>
+        </div>
+        <a href="https://github.com/blawyxd/ghost" target="_blank" rel="noopener noreferrer">
+          VIEW SOURCE CODE ↗
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <span class="project-type">02 / PERSONAL PROJECT</span>
+          <span class="project-language">PYTHON</span>
+        </div>
+        <h3>CachyControl<span class="dot">.</span></h3>
+        <p>
+          A desktop control centre concept for CachyOS.
+          Built with Python and PySide6, focused on system controls,
+          development tools and a customisable interface.
+        </p>
+        <div class="project-tags">
+          <span>Python</span>
+          <span>PySide6</span>
+          <span>CachyOS</span>
+          <span>Linux</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" data-reveal>
+      <span class="section-index">04 / TOOLKIT</span>
+      <h2>Tools I work with.</h2>
+      <p>
+        My current toolkit is centred around Linux and Python,
+        with web technologies for building and presenting projects.
+      </p>
+
+      <div class="toolkit">
+        <div><span>LANGUAGES</span><p>Python · Java · HTML · CSS · JavaScript</p></div>
+        <div><span>FRAMEWORKS & LIBRARIES</span><p>PySide6 · Typer · Rich · Astro</p></div>
+        <div><span>ENVIRONMENT</span><p>CachyOS · Linux · KDE Plasma · Fish</p></div>
+        <div><span>TOOLS</span><p>Git · GitHub · IntelliJ IDEA · Kate</p></div>
+      </div>
+    </section>
+
+    <section class="about-section about-focus" data-reveal>
+      <span class="section-index">05 / CURRENTLY</span>
+      <h2>Still figuring things out.</h2>
+      <p>
+        I'm focused on improving my programming skills, expanding Ghost
+        and experimenting with new ideas. I don't want to just collect
+        technologies — I want to understand them and make things with them.
+      </p>
+      <p class="focus-ending">More projects. More learning. Better software.</p>
+    </section>
+
+    <footer class="about-footer" data-reveal>
+      <div>
+        <span class="section-index">BUILT BY</span>
+        <p>blawy</p>
+      </div>
+      <div>
+        <span class="section-index">SOURCE CODE</span>
+        <p><a href="https://github.com/blawyxd/ghost" target="_blank" rel="noopener noreferrer">GitHub ↗</a></p>
+      </div>
+    </footer>
+  </div>
 </PageLayout>
 
+<script>
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  // Split heading text into individual hoverable letters.
+  if (!reduceMotion) {
+    document.querySelectorAll(
+      ".about-page h1, .about-page h2, .about-page h3"
+    ).forEach((heading) => {
+      Array.from(heading.childNodes).forEach((node) => {
+        if (node.nodeType !== Node.TEXT_NODE || !node.textContent) return;
+
+        const letters = Array.from(node.textContent, (character) => {
+          if (character.trim() === "") {
+            return document.createTextNode(character);
+          }
+
+          const letter = document.createElement("span");
+          letter.className = "hover-letter";
+          letter.textContent = character;
+          return letter;
+        });
+
+        node.replaceWith(...letters);
+      });
+    });
+  }
+
+  // Reveal sections as they enter the viewport.
+  const revealItems = document.querySelectorAll(
+    ".about-page [data-reveal], .about-page .interest, .about-page .project-card, .about-page .toolkit > div"
+  );
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  } else {
+    revealItems.forEach((item, index) => {
+      item.dataset.reveal = "";
+      item.style.setProperty(
+        "--reveal-delay",
+        `${(index % 4) * 85}ms`
+      );
+    });
+
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: "0px 0px -25px 0px"
+    });
+
+    revealItems.forEach((item) => observer.observe(item));
+  }
+</script>
+
 <style>
-  .about-kicker, .section-index { color: #666; font-size: 9px; font-weight: 800; letter-spacing: 1.5px; }
-  .about-kicker { margin-bottom: 24px; }
-  .about-intro { max-width: 610px; font-size: 17px; line-height: 1.8; }
-  .about-rule { height: 1px; background: #292929; margin: 65px 0; }
-  section { margin: 0 0 60px; }
-  section h2 { margin: 13px 0; font-size: 25px; }
-  section > p { max-width: 620px; }
-  .about-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid #292929; padding-top: 25px; }
-  .about-meta p { color: #ddd; font-size: 12px; }
-  .about-meta a { border-bottom: 1px solid #666; padding-bottom: 3px; }
-  @media(max-width: 600px) { .about-meta { grid-template-columns: 1fr; gap: 8px; } }
+  .about-page {
+    width: 100%;
+  }
+
+  .about-kicker,
+  .section-index {
+    color: #666;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+  }
+
+  .about-hero {
+    padding: 10px 0 0;
+  }
+
+  .about-kicker {
+    display: inline-block;
+    margin-bottom: 25px;
+  }
+
+  .about-hero h1 {
+    margin: 0 0 22px;
+    font-size: clamp(64px, 10vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -6px;
+  }
+
+  .name {
+    display: inline-block;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 900;
+    letter-spacing: -0.085em;
+    text-shadow:
+      0 0 8px rgba(255, 255, 255, 0.65),
+      0 0 22px rgba(255, 255, 255, 0.4),
+      0 0 48px rgba(255, 255, 255, 0.2);
+  }
+
+  .name :global(.hover-letter:hover) {
+    filter:
+      drop-shadow(0 0 7px rgba(255, 255, 255, 0.95))
+      drop-shadow(0 0 15px rgba(255, 255, 255, 0.65));
+  }
+
+  .dot {
+    color: #777;
+  }
+
+  .about-intro {
+    max-width: 610px;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .about-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 28px;
+    color: #888;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #aaa;
+    box-shadow: 0 0 9px rgba(255, 255, 255, 0.3);
+  }
+
+  .about-rule {
+    height: 1px;
+    background: #292929;
+    margin: 65px 0;
+  }
+
+  .about-section {
+    margin-bottom: 80px;
+  }
+
+  .about-section h2 {
+    margin: 14px 0 18px;
+    font-size: 27px;
+    letter-spacing: -1.5px;
+  }
+
+  .about-section > p {
+    max-width: 650px;
+    line-height: 1.8;
+  }
+
+  .interest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: 30px;
+    background: #292929;
+    border: 1px solid #292929;
+  }
+
+  .interest {
+    min-height: 155px;
+    padding: 23px;
+    background: #08090c;
+  }
+
+  .interest-number {
+    color: #555;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .interest h3 {
+    margin: 17px 0 8px;
+    font-size: 16px;
+  }
+
+  .interest p {
+    margin: 0;
+    color: #888;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .project-card {
+    margin-top: 25px;
+    padding: 25px;
+    border: 1px solid #292929;
+    background: #0d0e11;
+    transition: border-color 200ms ease, background 200ms ease;
+  }
+
+  .project-card:hover {
+    border-color: #555;
+    background: #101114;
+  }
+
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #666;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+  }
+
+  .project-card h3 {
+    margin: 28px 0 12px;
+    font-size: 26px;
+  }
+
+  .project-card > p {
+    max-width: 600px;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0;
+  }
+
+  .project-tags span {
+    padding: 6px 10px;
+    border: 1px solid #292929;
+    color: #aaa;
+    font-size: 10px;
+    transition: border-color 180ms ease, color 180ms ease;
+  }
+
+  .project-tags span:hover {
+    border-color: #777;
+    color: #fff;
+  }
+
+  .project-card > a {
+    display: inline-block;
+    margin-top: 5px;
+    color: #ddd;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+
+  .project-card > a:hover,
+  .about-footer a:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .toolkit {
+    margin-top: 28px;
+    border-top: 1px solid #292929;
+  }
+
+  .toolkit > div {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid #292929;
+  }
+
+  .toolkit span {
+    color: #666;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+  }
+
+  .toolkit p {
+    margin: 0;
+    color: #ccc;
+    font-size: 12px;
+  }
+
+  .focus-ending {
+    color: #ddd;
+    font-weight: 700;
+  }
+
+  .about-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    border-top: 1px solid #292929;
+    padding-top: 25px;
+    margin-top: 20px;
+  }
+
+  .about-footer p {
+    color: #ddd;
+    font-size: 12px;
+  }
+
+  .about-footer a {
+    border-bottom: 1px solid #666;
+    padding-bottom: 3px;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+
+  :global(.hover-letter) {
+    display: inline-block;
+    position: relative;
+    transform-origin: center bottom;
+    transition: transform 180ms ease, filter 180ms ease;
+  }
+
+  :global(.hover-letter:hover) {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  }
+
+  :global([data-reveal]) {
+    opacity: 0;
+    transform: translateY(55px) scale(0.98);
+    filter: blur(5px);
+    transition:
+      opacity 850ms cubic-bezier(.16, 1, .3, 1),
+      transform 750ms cubic-bezier(.2, .7, .2, 1),
+      filter 850ms cubic-bezier(.16, 1, .3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  :global([data-reveal].is-visible) {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  @media (max-width: 600px) {
+    .about-hero h1 {
+      font-size: clamp(52px, 13vw, 78px);
+      letter-spacing: -4px;
+    }
+
+    .interest-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .toolkit > div {
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+
+    .project-card {
+      padding: 18px;
+    }
+
+    .about-footer {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global([data-reveal]) {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+
+    :global(.hover-letter) {
+      transition: none;
+    }
+  }
 </style>

@@ -1,78 +1,327 @@
 ---
 const { title, description } = Astro.props;
+
+const navigation = [
+  { label: "HOME", href: "/", number: "01" },
+  { label: "DOCS", href: "/docs/", number: "02" },
+  { label: "LINUX", href: "/linux/", number: "03" },
+  { label: "ABOUT", href: "/about/", number: "04" },
+];
 ---
+
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content={description} />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <title>{title} — ghost.</title>
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="/" aria-label="Ghost home">
-      <img src="/favicon.svg" alt="" />
-      <span>ghost<span class="dot">.</span></span>
-    </a>
-    <nav>
-      <a href="/">HOME</a>
-      <a href="/docs/">DOCS</a>
-      <a href="/linux/">LINUX</a>
-      <a href="/about/">ABOUT</a>
-    </nav>
-    <a class="source-link" href="/docs/">GET STARTED ↗</a>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <title>{title} — ghost.</title>
+  </head>
 
-  <main>
-    <div class="eyebrow">GHOST / {title.toUpperCase()}</div>
-    <slot />
-  </main>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Ghost home">
+          <img class="brand-mark" src="/favicon.svg?v=2" alt="" />
+          <span>ghost<span class="brand-dot">.</span></span>
+        </a>
 
-  <footer>
-    <a class="brand" href="/">
-      <img src="/favicon.svg" alt="" />
-      <span>ghost<span class="dot">.</span></span>
-    </a>
-    <span class="copyright">© 2026 blawy</span>
-  </footer>
-</body>
+        <nav aria-label="Main navigation">
+          {navigation.map((item) => (
+            <a href={item.href} aria-current={item.href === Astro.url.pathname ? "page" : undefined}>
+              <span class="nav-number">{item.number}</span>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <a class="source-link" href="https://github.com/blawyxd/ghost">
+          SOURCE <span>↗</span>
+        </a>
+      </header>
+
+      <main>
+        <div class="page-meta">
+          <span><span class="status-dot"></span> GHOST / {title.toUpperCase()}</span>
+          <span>LINUX COMPANION · 001</span>
+        </div>
+
+        <slot />
+      </main>
+
+      <footer>
+        <a class="brand" href="/" aria-label="Ghost home">
+          <img class="brand-mark" src="/favicon.svg?v=2" alt="" />
+          <span>ghost<span class="brand-dot">.</span></span>
+        </a>
+
+        <span>BUILT FOR THE CURIOUS.</span>
+        <span>GHOST PROJECT · 2026</span>
+        <span class="copyright">© 2026 blawy</span>
+      </footer>
+    </div>
+  </body>
 </html>
 
 <style is:global>
-:root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #0a0a0a; color: #ededed; }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; min-height: 100vh; }
-a { color: inherit; text-decoration: none; }
-.topbar { height: 76px; padding: 0 7%; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #242424; }
-.brand { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 850; letter-spacing: -1px; }
-.brand img { width: 23px; height: 23px; }
-.dot { color: #777; }
-nav { display: flex; gap: 30px; }
-nav a, .source-link, .eyebrow { font-size: 10px; letter-spacing: 1.5px; font-weight: 750; color: #777; transition: color .2s; }
-nav a:hover, .source-link:hover { color: #fff; }
-main { width: min(900px, 86%); margin: 110px auto 150px; min-height: 55vh; }
-.eyebrow { margin-bottom: 30px; }
-h1 { font-size: clamp(48px, 8vw, 88px); line-height: .98; letter-spacing: -5px; margin: 0 0 28px; font-weight: 850; }
-h2 { margin: 65px 0 18px; font-size: 22px; letter-spacing: -1px; }
-h3 { font-size: 15px; margin: 0 0 10px; }
-p, li { color: #999; line-height: 1.8; font-size: 14px; max-width: 680px; }
-ul { padding-left: 20px; }
-.content-link { display: inline-block; color: #ededed; border-bottom: 1px solid #555; padding-bottom: 4px; margin-top: 18px; font-size: 12px; }
-.entry { padding: 22px 0; border-top: 1px solid #292929; }
-.entry p { margin-bottom: 0; }
-code { color: #ddd; background: #171717; padding: 3px 6px; font-size: .9em; }
-footer { min-height: 90px; padding: 25px 7%; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #242424; }
-.copyright { color: #555; font-size: 10px; letter-spacing: .5px; }
-@media(max-width: 600px) {
-  .topbar { padding: 0 5%; }
-  nav { gap: 12px; }
-  nav a { font-size: 9px; }
-  .source-link { display: none; }
-  main { margin: 75px auto 100px; }
-  h1 { letter-spacing: -3px; }
-}
-@media(prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  :root {
+    color-scheme: dark;
+    font-family: "Atkinson Hyperlegible", "Arial", sans-serif;
+    background: #0a0a0a;
+    color: #ededed;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+    --background: #0a0a0a;
+    --surface: #101010;
+    --border: #292929;
+    --muted: #777;
+    --white: #ededed;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-shell {
+    width: min(1120px, calc(100% - 64px));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+  }
+
+  .brand-mark {
+    width: 23px;
+    height: 23px;
+    display: block;
+  }
+
+  .brand-dot {
+    color: #999;
+  }
+
+  nav {
+    display: flex;
+    gap: 27px;
+  }
+
+  nav a,
+  .source-link {
+    color: #aaa;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 150ms ease;
+  }
+
+  nav a:hover,
+  .source-link:hover {
+    color: white;
+  }
+
+  nav a[aria-current="page"] {
+    color: #ededed;
+  }
+
+  .nav-number {
+    color: #666;
+    margin-right: 5px;
+  }
+
+  .source-link span {
+    margin-left: 5px;
+  }
+
+  main {
+    min-height: 55vh;
+    padding: 35px 0 100px;
+  }
+
+  .page-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 65px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    background: #aaa;
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-size: clamp(64px, 10vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -6px;
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: 28px;
+    letter-spacing: -1.5px;
+    font-weight: 800;
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  p,
+  li {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
+  code {
+    color: #ddd;
+    background: #171717;
+    padding: 3px 6px;
+    font-size: 0.9em;
+  }
+
+  .content-link {
+    display: inline-block;
+    color: #ededed;
+    border-bottom: 1px solid #555;
+    padding-bottom: 4px;
+    margin-top: 18px;
+    font-size: 12px;
+  }
+
+  .entry {
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .entry p {
+    margin-bottom: 0;
+  }
+
+  footer {
+    min-height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer > span {
+    color: #777;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .copyright {
+    color: #555;
+  }
+
+  @media (max-width: 700px) {
+    .site-shell {
+      width: calc(100% - 36px);
+    }
+
+    .topbar {
+      height: auto;
+      min-height: 70px;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 15px 0;
+    }
+
+    nav {
+      order: 3;
+      width: 100%;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    nav a {
+      font-size: 9px;
+    }
+
+    .source-link {
+      font-size: 9px;
+    }
+
+    main {
+      padding: 30px 0 75px;
+    }
+
+    .page-meta {
+      margin-bottom: 45px;
+      font-size: 8px;
+    }
+
+    h1 {
+      font-size: clamp(52px, 13vw, 78px);
+      letter-spacing: -4px;
+    }
+
+    footer {
+      flex-wrap: wrap;
+      padding: 25px 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
 </style>

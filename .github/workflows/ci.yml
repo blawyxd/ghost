@@ -8,49 +8,46 @@ on:
 
 jobs:
   python:
-    name: Test Ghost CLI
+    name: Test Ghost CLI (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12", "3.14"]
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
+          python-version: ${{ matrix.python-version }}
       - name: Install Ghost
         run: |
           python -m pip install --upgrade pip
           python -m pip install .
-
       - name: Check CLI
         run: |
+          python -m unittest discover -s tests -v
           ghost --help
           ghost help
 
   website:
     name: Build website
     runs-on: ubuntu-latest
-
     defaults:
       run:
         working-directory: website
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: website/package-lock.json
-
       - name: Install dependencies
         run: npm ci
-
       - name: Build Astro site
         run: npm run build
