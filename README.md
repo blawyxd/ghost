@@ -1,4 +1,4 @@
-python -c 'from pathlib import Path; Path("README.md").write_text("""<div align="center">
+
 
 <img src="website/public/favicon.svg" width="100" alt="Ghost logo">
 
